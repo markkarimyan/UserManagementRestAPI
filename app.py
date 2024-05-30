@@ -1,10 +1,10 @@
 from flask import Flask
 from config import Config
 from models import db
-from create import user_create_routes
-from read import user_read_routes
-from update import user_update_routes
-from delete import user_delete_routes
+from user.create import user_create_routes
+from user.read import user_read_routes
+from user.update import user_update_routes
+from user.delete import user_delete_routes
 
 app = Flask(__name__)
 app.config.from_object(Config)
