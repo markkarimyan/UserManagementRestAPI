@@ -8,6 +8,7 @@ from user.read import user_read_routes
 from user.update import user_update_routes
 from user.delete import user_delete_routes
 from user.login import user_login_routes
+from user.logout import user_logout_routes
 from project.create import project_create_routes
 from project.read import project_read_routes
 from project.update import project_update_routes
@@ -30,6 +31,8 @@ app.register_blueprint(project_create_routes)
 app.register_blueprint(project_read_routes)
 app.register_blueprint(project_update_routes)
 app.register_blueprint(project_delete_routes)
+
+app.register_blueprint(user_logout_routes)
 
 with app.app_context():
     db.create_all()

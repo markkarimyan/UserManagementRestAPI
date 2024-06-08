@@ -1,6 +1,12 @@
+import datetime
 from flask_sqlalchemy import SQLAlchemy
+import pytz
 
 db = SQLAlchemy()
+
+def gmt_plus_4():
+    tz = pytz.timezone('Etc/GMT-4')
+    return datetime.now(tz)
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -21,3 +27,8 @@ class Project(db.Model):
 
     def __repr__(self):
         return f'<Project {self.title}>'
+    
+class TokenBlocklist(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    jti = db.Column(db.String(36), nullable=False)
+    created_at = db.Column(db.DateTime, nullable=False, default=gmt_plus_4)
